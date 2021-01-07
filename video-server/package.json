@@ -1,16 +1,16 @@
 {
-    "name": "vennWedo-video-server",
-    "version": "1.0.0",
-    "description": "This server will be used to stream video to our VennWedo Platform. It will be using the MongoDB GridFS to fetch the videos.",
-    "main": "server.js",
-    "scripts": {
-      "start": "nodemon server.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "express": "^4.17.1",
-      "mongodb": "^3.6.3",
-      "nodemon": "^2.0.5"
-    }
+  "name": "vennWedo-video-server",
+  "version": "1.0.0",
+  "description": "This server will be used to stream video to our VennWedo Platform. It will be using the MongoDB GridFS to fetch the videos.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "Apache",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "nodemon": "^2.0.5"
   }
+}
