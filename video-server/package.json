@@ -1,7 +1,7 @@
 {
     "name": "vennWedo-video-server",
     "version": "1.0.0",
-    "description": "",
+    "description": "This server will be used to stream video to our VennWedo Platform. It will be using the MongoDB GridFS to fetch the videos.",
     "main": "server.js",
     "scripts": {
       "start": "nodemon server.js"
