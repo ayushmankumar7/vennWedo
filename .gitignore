@@ -1,3 +1,6 @@
+# Add django files
+*pyc
+
 # Logs
 logs
 *.log
