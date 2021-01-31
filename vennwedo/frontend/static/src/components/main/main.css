@@ -1,0 +1,25 @@
+@font-face{
+font-family: 'Reem Kufi', sans-serif !important;
+src: url("./../../components/fonts/ReemKufi-Regular.ttf");
+}
+.mainapp
+{
+    width: 100vw;
+    height: 100vh;
+    background:#0B132B;
+}
+.main_body
+{
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color:white;
+    height:100vh;
+    width:100vw;
+    background:rgba(58, 80, 107,0.9);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+}
