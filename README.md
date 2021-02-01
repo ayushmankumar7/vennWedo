@@ -2,4 +2,7 @@
 
 ![Project-logo](assets/VennWedo.png)
 
-Something Intresting Coming... ;)
+## Dev Setup 
+
+1. Clone the Repo
+2. cd vennWedo
