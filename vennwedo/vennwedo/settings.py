@@ -38,7 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'frontend.apps.FrontendConfig',
+
+    'rest_framework',
 ]
+
+# REST frameworkk pagination
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,4 +133,3 @@ STATIC_URL = '/static/'
 
 STATIC_URL = '/frontend/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'frontend/static')]
-         
