@@ -1,13 +1,12 @@
-from django.contrib.auth.models import User
-from rest_framework import permissions, viewsets
+from django.contrib.auth import get_user_model
+from accounts.serializers import CustomRegisterSerializer
+from rest_framework import permissions
+from rest_framework import generics
 
-from backend.serializers import UserSerializer
 
+User = get_user_model()
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_class = [permissions.IsAuthenticated]
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = CustomRegisterSerializer
