@@ -6,6 +6,10 @@ from django.contrib.auth.admin import UserAdmin
 class UserAdminConfig(UserAdmin):
     model = CustomUser
     list_display = ('username','name', 'email',)
+    fieldsets = (
+        (None, {'fields': ('email', 'username', 'name')}
+         ), ('Permissions', {'fields': ('is_staff', 'is_active')}),
+    )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -14,4 +18,5 @@ class UserAdminConfig(UserAdmin):
     )
 
 
-# admin.site.register(CustomUser, UserAdminConfig)
+admin.site.register(CustomUser, UserAdminConfig)
+# admin.site.register(CustomUser)
