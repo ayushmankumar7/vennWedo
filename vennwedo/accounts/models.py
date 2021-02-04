@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
 class UserManager(BaseUserManager):
@@ -40,7 +40,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
@@ -49,6 +49,7 @@ class CustomUser(AbstractBaseUser):
     name = models.CharField(max_length=100)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'username']
