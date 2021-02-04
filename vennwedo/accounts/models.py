@@ -7,6 +7,11 @@ class UserManager(BaseUserManager):
     use_in_migrations = True
 
     def create_user(self, username, email, name, password=None):
+        if not email:
+            raise ValueError("User must have an email.")
+        if not username:
+            raise ValueError("User must have an username.")
+
         user = self.model(
             username=username,
             email=self.normalize_email(email),
@@ -29,12 +34,13 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, username, email, name, password):
         user = self.create_user(
-            username,
-            email,
+            username=username,
+            email=self.normalize_email(email),
             password=password,
-            name="True",
+            name=name,
         )
         user.is_staff = True
+        user.is_admin = True
         user.is_superuser = True
         user.save(using=self._db)
         return user
@@ -43,9 +49,10 @@ class UserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
-    username = models.CharField(max_length=15, unique=True, db_index=True)
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=15, unique=True, db_index=True)
     name = models.CharField(max_length=100)
+    is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -56,10 +63,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['name', 'username']
 
     def has_perm(self, perm, obj=None):
-        return self.is_superuser
+        return self.is_admin
 
     def has_module_perms(self, app_label):
-        return self.is_superuser
+        return True
 
     def __str__(self):
         return self.username
