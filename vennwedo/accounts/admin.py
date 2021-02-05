@@ -1,6 +1,7 @@
 from django.contrib import admin
-from accounts.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
+
+from accounts.models import CustomUser
 
 
 class UserAdminConfig(UserAdmin):
@@ -15,7 +16,8 @@ class UserAdminConfig(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'name', 'password1', 'password2', 'is_active', 'is_staff')
+            'fields': ('email', 'username', 'name', 'password1', 'password2',
+            'is_active', 'is_staff')
         }),
     )
 
