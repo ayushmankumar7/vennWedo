@@ -37,17 +37,46 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'frontend.apps.FrontendConfig',
+    'django.contrib.sites',
+    'frontend.apps.FrontendConfig',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+
+    'accounts',
 ]
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # REST frameworkk pagination
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'accounts.serializers.CustomUserSerializer',
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,11 +91,10 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'vennwedo.urls'
 
 
-import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'frontend/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,4 +160,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_URL = '/frontend/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'frontend/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static')]
