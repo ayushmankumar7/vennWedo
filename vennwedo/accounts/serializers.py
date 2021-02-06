@@ -1,16 +1,24 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from dj_rest_auth.registration.serializers import RegisterSerializer
+from django.db import transaction
 
 User = get_user_model()
 
 
-class CustomRegisterSerializer(serializers.ModelSerializer):
-
-    name = serializers.CharField(required=True)
-    username = serializers.CharField(required=True)
-    email = serializers.EmailField(required=True)
-    password = serializers.CharField(write_only=True, required=True)
-
+class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'name', 'password')
+        fields = ('id', 'username', 'email', 'name')
+
+
+class CustomRegisterSerializer(RegisterSerializer):
+    name = serializers.CharField(max_length=100)
+
+    # Define transaction.atomic to rollback the save operation in case of error
+    @transaction.atomic
+    def save(self, request):
+        user = super().save(request)
+        user.name = self.data.get('name')
+        user.save()
+        return user
