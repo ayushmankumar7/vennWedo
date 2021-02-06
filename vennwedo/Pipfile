@@ -11,6 +11,8 @@ djangorestframework = "==3.12.0"
 pytest = "==6.2.0"
 isort = "==5.7.0"
 flake8 = "==3.8.0"
+dj-rest-auth = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.6"
