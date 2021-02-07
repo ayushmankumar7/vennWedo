@@ -78,6 +78,9 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
