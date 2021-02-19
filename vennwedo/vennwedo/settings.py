@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     'accounts',
+    'backend',
 ]
 
 SITE_ID = 1
@@ -164,3 +165,6 @@ STATIC_URL = '/static/'
 
 STATIC_URL = '/frontend/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static')]
+
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'backend/static/images')

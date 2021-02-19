@@ -250,3 +250,9 @@ migrations/
 
 # Add pyc files
 *pyc
+
+# static file for thumbnail
+*/backend/static/
+
+# database
+*.sqlite3
