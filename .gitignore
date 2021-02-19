@@ -250,3 +250,5 @@ migrations/
 
 # Add pyc files
 *pyc
+
+vennwedo\frontend\migrations
