@@ -29,5 +29,3 @@ class CustomRegisterSerializer(RegisterSerializer):
 
 class CustomLoginSerializer(LoginSerializer):
     email = None
-    # username = None
-    # email = serializers.CharField(required=False, allow_blank=True)
