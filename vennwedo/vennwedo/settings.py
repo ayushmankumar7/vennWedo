@@ -69,6 +69,7 @@ REST_FRAMEWORK = {
 }
 
 REST_AUTH_SERIALIZERS = {
+    'LOGIN_SERIALIZER': 'accounts.serializers.CustomLoginSerializer',
     'USER_DETAILS_SERIALIZER': 'accounts.serializers.CustomUserSerializer',
 }
 
@@ -80,7 +81,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -16,6 +16,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 class CustomRegisterSerializer(RegisterSerializer):
     name = serializers.CharField(max_length=100)
+    username = None
 
     # Define transaction.atomic to rollback the save operation in case of error
     @transaction.atomic
@@ -24,3 +25,9 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.name = self.data.get('name')
         user.save()
         return user
+
+
+class CustomLoginSerializer(LoginSerializer):
+    email = None
+    # username = None
+    # email = serializers.CharField(required=False, allow_blank=True)
